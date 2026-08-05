@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stylist Management | Luxe Salon</title>
+<script>window.PAGE_TITLE = "Stylists";</script>
+<script src="scripts/header-logic.js" defer></script>
+<script src="scripts/include.js" defer></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f1f1ef",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "secondary-fixed-dim": "#f5b8ae",
+                        "primary-container": "#d4af37",
+                        "surface-variant": "#e2e3e1",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "surface": "#f9f9f7",
+                        "surface-dim": "#dadad8",
+                        "background": "#f9f9f7",
+                        "on-primary-container": "#554300",
+                        "tertiary-fixed": "#dbe1ff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeec",
+                        "on-secondary-fixed-variant": "#663b34",
+                        "on-surface-variant": "#4d4635",
+                        "outline": "#7f7663",
+                        "on-secondary-container": "#7a4c44",
+                        "surface-tint": "#735c00",
+                        "secondary": "#81524a",
+                        "on-primary-fixed": "#241a00",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#32110c",
+                        "on-background": "#1a1c1b",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#d0c5af",
+                        "primary-fixed": "#ffe088",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#e9c349",
+                        "secondary-container": "#fec0b6",
+                        "tertiary-container": "#97b0ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed": "#00174b",
+                        "on-tertiary-container": "#254188",
+                        "surface-container-low": "#f4f4f2",
+                        "on-surface": "#1a1c1b",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e3e1",
+                        "surface-container-high": "#e8e8e6",
+                        "inverse-surface": "#2f3130",
+                        "primary": "#735c00",
+                        "secondary-fixed": "#ffdad4",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#415ba4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "240px",
+                        "sidebar-collapsed": "72px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "margin-page": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-md": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-sm": ["11px", {"lineHeight": "1", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+
+    <!-- Side Navigation Bar -->
+<div id="sidebar-placeholder"></div>
+
+<!-- Top Navigation Bar -->
+<div id="header-placeholder"></div>
+
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width pt-16 min-h-screen bg-surface-bright">
+<div class="max-w-[1440px] mx-auto p-margin-page">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-headline-display text-headline-display text-on-surface">Stylists</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage your team's availability and performance.</p>
+</div>
+<div class="flex gap-stack-sm">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline scale-75" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant focus:border-primary-container focus:ring-0 rounded-lg text-body-md font-body-md transition-all" placeholder="Search stylists..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant hover:bg-surface-container-high transition-colors rounded-lg font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span> Filter
+                    </button>
+</div>
+</div>
+<!-- Stylists Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-stack-lg">
+<!-- Stylist Card 1: Elena V. -->
+<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
+<div class="p-6">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female hair stylist named Elena V. with a warm, confident smile, styled in a modern boutique salon environment with soft, golden-hour lighting. She has artistic hair coloring and wears a minimalist black stylist apron. The background is softly blurred showing high-end salon equipment and plants, maintaining a premium editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaHiREos9HLYfSmQPBc4WxuTvldsS4deDl9JVlFfD4GNRMdGcYzNqWryLlV4iXWFupJu-Pr41MyGwxduLgLIKj_HARZZXCEa0GezgMeEAy98EpRM5SoQmiKHNQWPbqqqCz8OTK21EgI9Pd26593BihnjUYqae5EzKGN1_dCgTqHenFEKJOfEla5iJ4tnP2gkdS-JNjGEaTHFf0__psLRHnftF9Ai1cYw2J450QCBk_7XhoxmH8Bjk5bhv3JbqO8xzOMjzkowe4xsw"/>
+</div>
+<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-green-500"></div>
+</div>
+<span class="px-3 py-1 bg-green-50 text-green-700 text-label-sm font-label-sm rounded-full border border-green-100 uppercase tracking-wider">Available</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Elena V.</h3>
+<p class="font-label-md text-label-md text-on-surface-variant font-medium">Senior Master Stylist</p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.9</span>
+</div>
+<span class="text-label-md text-on-surface-variant">12 Appts Today</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
+</div>
+<!-- Stylist Card 2: Marcus J. -->
+<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
+<div class="p-6">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male stylist named Marcus J. with a sophisticated, professional appearance. He is standing in a luxury minimalist salon with neutral tones and soft warm lighting. He has a neatly trimmed beard and is dressed in a smart-casual beige shirt. The composition is focused and high-density, conveying boutique elegance and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALlCqR4U_LoB882OfkS4za9YkOyNy1_k7O7OovjBDB8BYrsug2KaUcMSosYLayJDFImgGHow2MEUeHStcfqZlcyO8vJHI6iX961EtP-RkWxZDAmMqYOw4x7wbLWI76Bn2uhAe6wFuUpfvKvppvdLdEVfHyHqKKcMPuVfXVzJASt6ccUSvDyqhJKgyceHfmJeOyGZqUV7mjPrCwLj1hGtfPW1MWYPY8Ehq4t88jYYOeKRV8roRi2dLUKMGNQ5DVX3cc63xdr_yyyAo"/>
+</div>
+<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-orange-400"></div>
+</div>
+<span class="px-3 py-1 bg-orange-50 text-orange-700 text-label-sm font-label-sm rounded-full border border-orange-100 uppercase tracking-wider">Busy</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Marcus J.</h3>
+<p class="font-label-md text-label-md text-on-surface-variant font-medium">Precision Cut Specialist</p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.8</span>
+</div>
+<span class="text-label-md text-on-surface-variant">In Session (20m)</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
+</div>
+<!-- Stylist Card 3: Sophia L. -->
+<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
+<div class="p-6">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
+<img class="w-full h-full object-cover" data-alt="A stylish female hair professional named Sophia L. in a bright, modern salon setting. She is smiling gently at the camera, wearing professional black attire. The lighting is diffused and airy, highlighting her expertise. The background shows hints of a clean, high-end beauty studio with gold accents and marble surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCILC3nrPMXsK1agLii1eIE0V6D73eW8GchIDQImvlP8Uw5SnsiN_V4iJfYSRF2_6VVkIEclfEvCHQZ6DprQ7vT2XvB3QEdDALXbMzOb-zoHb9p4-quHOmSzmO9BqmzSM3Td33LCMuIMo4v3Jtl6uU5xh6l665-F3TdWh2IeahF7g7LrnEBo7lD6p8JWSO7PMgOv0XkkqT6BA7Z30CTJrXJzpSniGDa1YnT0Qw9sVcC707EZOacA-B3GNqU0LGyfBfWKDEcD3Z7nI"/>
+</div>
+<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-gray-400"></div>
+</div>
+<span class="px-3 py-1 bg-gray-100 text-gray-600 text-label-sm font-label-sm rounded-full border border-gray-200 uppercase tracking-wider">Off-duty</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sophia L.</h3>
+<p class="font-label-md text-label-md text-on-surface-variant font-medium">Color &amp; Highlights Expert</p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">5.0</span>
+</div>
+<span class="text-label-md text-on-surface-variant">Starts at 2:00 PM</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
+</div>
+<!-- Stylist Card 4: Julian R. -->
+<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
+<div class="p-6">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male stylist named Julian R., exhibiting a creative and trendy look. He is in a contemporary salon with architectural lighting and dark charcoal accents. His style is editorial and avant-garde, suggesting a focus on creative styling. The overall mood is cool, calm, and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKD6KekL3rACG5pfJemHNj9doH9-w5YEuAO7DZxbnBxKrysWSEn5DYffidFAcqUahjMovqxgVkU3QQOgYqc0vKMw1p9Wc_MhxzIAGmZikcjc9kA9n_GhTg3__SApe59oBLJBjodoaGaceY6oXvnDvUMZ23N12d4THUD6ZacCsyU-cPVT1JohAGBiVhPaZMLsu3H3KNSTcb_-c49cgC7ejsbbw5Or6av7JPpgmR1oNXurTOtKKaL2bB3r1vwIFQcY6luQCGNnjKfq0"/>
+</div>
+<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-green-500"></div>
+</div>
+<span class="px-3 py-1 bg-green-50 text-green-700 text-label-sm font-label-sm rounded-full border border-green-100 uppercase tracking-wider">Available</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Julian R.</h3>
+<p class="font-label-md text-label-md text-on-surface-variant font-medium">Lead Barber &amp; Groomer</p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.7</span>
+</div>
+<span class="text-label-md text-on-surface-variant">8 Appts Today</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
+</div>
+<!-- Add New Stylist (Ghost Card) -->
+<button class="group border-2 border-dashed border-outline-variant hover:border-primary-container hover:bg-primary-container/5 transition-all duration-300 flex flex-col items-center justify-center p-8 rounded-lg min-h-[300px]">
+<div class="w-16 h-16 rounded-full bg-surface-container group-hover:bg-primary-container/20 flex items-center justify-center mb-4 transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-3xl" data-icon="person_add">person_add</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface-variant group-hover:text-primary transition-colors">Add New Stylist</span>
+<p class="font-body-md text-body-md text-outline text-center mt-2">Onboard a new member to the Luxe team</p>
+</button>
+</div>
+<!-- Team Overview Statistics (Asymmetric Bento Component) -->
+<div class="mt-stack-lg grid grid-cols-12 gap-stack-lg">
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant p-6 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline-md text-headline-md text-on-surface">Peak Performance Weekly</h4>
+<div class="flex gap-stack-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Bookings</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Retention</span>
+</div>
+</div>
+</div>
+<div class="h-48 flex items-end gap-2 px-2">
+<!-- Mock Chart bars -->
+<div class="flex-1 bg-surface-container h-[60%] rounded-t-sm relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary font-label-sm text-label-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">74%</div>
+</div>
+<div class="flex-1 bg-primary-container/40 h-[80%] rounded-t-sm relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary font-label-sm text-label-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">92%</div>
+</div>
+<div class="flex-1 bg-surface-container h-[70%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-primary-container h-[95%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-surface-container h-[55%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-tertiary-container h-[85%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-surface-container h-[75%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-primary-container h-[100%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-surface-container h-[65%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-tertiary-container h-[70%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-surface-container h-[80%] rounded-t-sm relative group"></div>
+<div class="flex-1 bg-primary-container/60 h-[90%] rounded-t-sm relative group"></div>
+</div>
+<div class="flex justify-between mt-4 border-t border-outline-variant pt-4">
+<div class="text-center flex-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Total Team Revenue</p>
+<p class="font-headline-md text-headline-md text-on-surface mt-1">$24,850.00</p>
+</div>
+<div class="w-[1px] bg-outline-variant"></div>
+<div class="text-center flex-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Avg. Customer Rating</p>
+<div class="flex items-center justify-center gap-1 mt-1">
+<span class="font-headline-md text-headline-md text-on-surface">4.87</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-primary text-on-primary p-8 rounded-lg relative overflow-hidden flex flex-col justify-between">
+<div class="relative z-10">
+<h4 class="font-headline-lg text-headline-lg leading-tight mb-4">Optimized Schedule Available</h4>
+<p class="font-body-md text-body-md opacity-80 mb-8">AI-suggested shift adjustments could increase Saturday throughput by 15%.</p>
+<button class="px-6 py-3 bg-white text-primary font-label-md text-label-md rounded shadow-xl hover:bg-surface-bright transition-all inline-flex items-center gap-2">
+                            Review Suggestions <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary-container/20 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+
+        <!-- Modal overlay - add once, near end of <body> -->
+    <div id="modalOverlay" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-[100]">
+        <div class="bg-surface-container-lowest rounded-xl w-full max-w-md p-6 relative">
+            <button id="modalClose" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">✕</button>
+            <h2 id="modalTitle" class="text-lg font-bold mb-4">Create New</h2>
+            <form id="modalForm" class="space-y-3">
+                <!-- fields injected here -->
+            </form>
+            <p id="modalError" class="text-red-500 text-sm mt-2 hidden"></p>
+            <div class="flex justify-end gap-2 mt-4">
+                <button type="button" id="modalCancel" class="px-4 py-2 rounded-lg border border-outline-variant text-sm">Cancel</button>
+                <button type="submit" form="modalForm" id="modalSubmit" class="px-4 py-2 rounded-lg bg-primary-container text-on-primary-container text-sm font-bold">Save</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

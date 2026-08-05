@@ -1,0 +1,41 @@
+<header class="h-16 fixed top-0 right-0 z-40 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-page w-[calc(100%-theme(spacing.sidebar-width))] ml-sidebar-width">
+<div class="flex items-center gap-4">
+<span id="pageTitle" class="font-headline-md text-headline-md text-on-surface tracking-tight"></span>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<div class="h-8 w-px bg-outline-variant"></div>
+
+
+<!-- "Create New" Button Dropdown  -->
+<div class="relative" id="createNewDropdown">
+    <button
+        id="createNewBtn"
+        class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-label-md text-label-md font-bold uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all"
+    >
+        Create New
+    </button>
+    <div
+        id="createNewMenu"
+        class="absolute right-0 top-full mt-2 w-64 rounded-xl border border-outline-variant bg-surface-container-lowest shadow-lg overflow-hidden hidden z-50"
+    >
+        <a href="#" data-action="create-service" class="block px-4 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors">Service</a>
+        <a href="#" data-action="create-stylist" class="block px-4 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors">Stylist</a>
+        <a href="#" data-action="create-appointment" class="block px-4 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors">Appointment</a>
+        <a href="#" data-action="create-payment" class="block px-4 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors">Payment Record</a>
+        <a href="#" data-action="create-customer" class="block px-4 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors">Customer</a>
+    </div>
+</div>
+
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right">
+<p class="font-label-md text-label-md font-bold">Elena Vance</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Front Desk</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a friendly receptionist with a warm smile, wearing a minimalist black uniform, in a brightly lit modern luxury salon lobby with soft gold accents and marble textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPc23NTU8Jrkgyrq9RisCYG4Xd9pD-_vqYFwwvyRcdyKoXTz00R0K86qiF_G0FBqVPZ6-jUs8g9afwtEDvsqVsluxs6NRVwXkVLaRsaP80iBTFwvK6ikRrmg70D2PFXkysslwyVvrAhhWZnW9JQD29RIgDzlWURlA0Fu35ncpP3YO4_FZPkJzE97TVsjWjKOdmDTfwtlt-NKfpUvXFlIYLQ1FK3SLfaXgsNy3BaoBm4b68FtpIbMbVRdcr-2Nk0hEWfPGO1r4whjU"/>
+</div>
+</div>
+</header>

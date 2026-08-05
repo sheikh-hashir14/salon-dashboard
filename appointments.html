@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Appointments | Luxe Salon Portal</title>
+<script>window.PAGE_TITLE = "Appointments";</script>
+<script src="scripts/header-logic.js" defer></script>
+<script src="scripts/include.js" defer></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f9f9f7",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f1f1ef",
+                    "on-tertiary-fixed-variant": "#27438a",
+                    "secondary-fixed-dim": "#f5b8ae",
+                    "primary-container": "#d4af37",
+                    "surface-variant": "#e2e3e1",
+                    "tertiary-fixed-dim": "#b4c5ff",
+                    "surface": "#f9f9f7",
+                    "surface-dim": "#dadad8",
+                    "background": "#f9f9f7",
+                    "on-primary-container": "#554300",
+                    "tertiary-fixed": "#dbe1ff",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eeeeec",
+                    "on-secondary-fixed-variant": "#663b34",
+                    "on-surface-variant": "#4d4635",
+                    "outline": "#7f7663",
+                    "on-secondary-container": "#7a4c44",
+                    "surface-tint": "#735c00",
+                    "secondary": "#81524a",
+                    "on-primary-fixed": "#241a00",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#32110c",
+                    "on-background": "#1a1c1b",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#d0c5af",
+                    "primary-fixed": "#ffe088",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#e9c349",
+                    "secondary-container": "#fec0b6",
+                    "tertiary-container": "#97b0ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#e9c349",
+                    "on-tertiary-fixed": "#00174b",
+                    "on-tertiary-container": "#254188",
+                    "surface-container-low": "#f4f4f2",
+                    "on-surface": "#1a1c1b",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e2e3e1",
+                    "surface-container-high": "#e8e8e6",
+                    "inverse-surface": "#2f3130",
+                    "primary": "#735c00",
+                    "secondary-fixed": "#ffdad4",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#415ba4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sidebar-width": "240px",
+                    "sidebar-collapsed": "72px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "margin-page": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f7; color: #1a1c1b; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .sidebar-active { border-left: 4px solid #735c00; background-color: rgba(212, 175, 55, 0.1); color: #735c00; font-weight: 600; }
+        .status-badge-confirmed { background-color: rgba(212, 175, 55, 0.1); color: #735c00; border-left: 3px solid #735c00; }
+        .status-badge-finished { background-color: #e2e3e1; color: #4d4635; border-left: 3px solid #4d4635; }
+        .status-badge-cancelled { background-color: #ffdad6; color: #ba1a1a; border-left: 3px solid #ba1a1a; }
+        .table-row-hover:hover { background-color: #f4f4f2; transition: all 0.2s ease; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-surface">
+
+<!-- Side Navigation Bar -->
+ <div id="sidebar-placeholder"></div>
+
+<!-- Top Navigation Bar -->
+<div id="header-placeholder"></div>
+
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width pt-16 min-h-screen">
+<div class="max-w-[1440px] mx-auto p-margin-page">
+<!-- Filter Bar: Date Picker, Stylist Dropdown, Status Dropdown -->
+<section class="mb-stack-lg flex flex-col md:flex-row items-center justify-between gap-gutter">
+<div class="flex flex-wrap items-center gap-4">
+<!-- Date Picker -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-outline">Date Selection</label>
+<div class="relative">
+<input class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 font-body-md text-body-md w-48 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" type="date" value="2023-10-27"/>
+</div>
+</div>
+<!-- Stylist Dropdown -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-outline">Stylist</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 font-body-md text-body-md w-48 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all appearance-none cursor-pointer">
+<option>All Stylists</option>
+<option>Elena Rodriguez</option>
+<option>Marcus Chen</option>
+<option>Sarah Jenkins</option>
+<option>David Vane</option>
+</select>
+</div>
+<!-- Status Dropdown -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-outline">Status</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 font-body-md text-body-md w-40 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all appearance-none cursor-pointer">
+<option>All Status</option>
+<option>Confirmed</option>
+<option>Finished</option>
+<option>Cancelled</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end">
+<span class="text-on-surface-variant font-body-md text-body-md">Showing 8 appointments for today</span>
+</div>
+</section>
+<!-- Main Appointments Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded shadow-none overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant">
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Time</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Customer</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Stylist</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Service</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Payment</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1: Finished -->
+<tr class="table-row-hover">
+<td class="px-6 py-4 font-body-md text-body-md font-semibold text-on-surface">09:00 AM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-md text-label-md text-on-surface-variant">AS</div>
+<span class="font-body-md text-body-md text-on-surface">Alice Sommers</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Elena Rodriguez</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Balayage &amp; Cut</td>
+<td class="px-6 py-4">
+<span class="status-badge-finished px-3 py-1 rounded-sm font-label-sm text-label-sm">Finished</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary-container/20 text-tertiary px-2 py-1 rounded font-label-sm text-label-sm">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-outline">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Confirmed -->
+<tr class="table-row-hover">
+<td class="px-6 py-4 font-body-md text-body-md font-semibold text-on-surface">11:30 AM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-md text-label-md text-on-surface-variant">JM</div>
+<span class="font-body-md text-body-md text-on-surface">James Miller</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Marcus Chen</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Men's Executive Cut</td>
+<td class="px-6 py-4">
+<span class="status-badge-confirmed px-3 py-1 rounded-sm font-label-sm text-label-sm">Confirmed</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-outline-variant/30 text-on-surface-variant px-2 py-1 rounded font-label-sm text-label-sm">Pending</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-outline">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Cancelled -->
+<tr class="table-row-hover opacity-60">
+<td class="px-6 py-4 font-body-md text-body-md font-semibold text-on-surface">01:00 PM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-md text-label-md text-on-surface-variant">LB</div>
+<span class="font-body-md text-body-md text-on-surface">Linda Blair</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Sarah Jenkins</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Hydrafacial Deluxe</td>
+<td class="px-6 py-4">
+<span class="status-badge-cancelled px-3 py-1 rounded-sm font-label-sm text-label-sm">Cancelled</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-on-surface-variant/40 px-2 py-1 font-label-sm text-label-sm">—</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-outline">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">restore</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Confirmed -->
+<tr class="table-row-hover">
+<td class="px-6 py-4 font-body-md text-body-md font-semibold text-on-surface">02:15 PM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-md text-label-md text-on-surface-variant">RW</div>
+<span class="font-body-md text-body-md text-on-surface">Robert White</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">David Vane</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Beard Sculpting</td>
+<td class="px-6 py-4">
+<span class="status-badge-confirmed px-3 py-1 rounded-sm font-label-sm text-label-sm">Confirmed</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary-container/20 text-tertiary px-2 py-1 rounded font-label-sm text-label-sm">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-outline">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Confirmed -->
+<tr class="table-row-hover">
+<td class="px-6 py-4 font-body-md text-body-md font-semibold text-on-surface">03:30 PM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-md text-label-md text-on-surface-variant">KP</div>
+<span class="font-body-md text-body-md text-on-surface">Katherine Price</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Elena Rodriguez</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Blowout &amp; Style</td>
+<td class="px-6 py-4">
+<span class="status-badge-confirmed px-3 py-1 rounded-sm font-label-sm text-label-sm">Confirmed</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-outline-variant/30 text-on-surface-variant px-2 py-1 rounded font-label-sm text-label-sm">Pending</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-outline">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Finished -->
+<tr class="table-row-hover">
+<td class="px-6 py-4 font-body-md text-body-md font-semibold text-on-surface">04:45 PM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-md text-label-md text-on-surface-variant">GH</div>
+<span class="font-body-md text-body-md text-on-surface">Gary Hudson</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Marcus Chen</td>
+<td class="px-6 py-4 font-body-md text-body-md text-on-surface-variant">Full Grooming Pkg</td>
+<td class="px-6 py-4">
+<span class="status-badge-finished px-3 py-1 rounded-sm font-label-sm text-label-sm">Finished</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary-container/20 text-tertiary px-2 py-1 rounded font-label-sm text-label-sm">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-outline">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 flex items-center justify-between bg-surface-container-low border-t border-outline-variant">
+<span class="font-label-md text-label-md text-on-surface-variant">Page 1 of 1</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant rounded opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Style Bento Grid Sub-section (Just for visual depth) -->
+<div class="mt-stack-lg grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-1 bg-surface-container-low border border-outline-variant rounded p-6 flex flex-col gap-2">
+<h3 class="font-label-md text-label-md text-outline uppercase">Daily Revenue</h3>
+<p class="font-headline-display text-headline-display text-on-surface">$1,420.00</p>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-label-sm text-label-sm">+12% from yesterday</span>
+</div>
+</div>
+<div class="md:col-span-1 bg-surface-container-low border border-outline-variant rounded p-6 flex flex-col gap-2">
+<h3 class="font-label-md text-label-md text-outline uppercase">Appointment Mix</h3>
+<div class="flex items-end gap-2 h-16 mt-2">
+<div class="flex-1 bg-primary h-[80%] rounded-t-sm" title="Hair"></div>
+<div class="flex-1 bg-tertiary h-[40%] rounded-t-sm" title="Skincare"></div>
+<div class="flex-1 bg-secondary h-[60%] rounded-t-sm" title="Men's"></div>
+<div class="flex-1 bg-primary/40 h-[20%] rounded-t-sm" title="Other"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline mt-1">
+<span>Hair</span>
+<span>Skin</span>
+<span>Men's</span>
+<span>Other</span>
+</div>
+</div>
+<div class="md:col-span-1 bg-primary text-on-primary rounded p-6 flex flex-col justify-between relative overflow-hidden">
+<!-- Subtle background decoration -->
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md opacity-80 uppercase">Next Stylist Break</h3>
+<p class="font-headline-md text-headline-md mt-1">Elena Rodriguez</p>
+<p class="font-body-md text-body-md opacity-90">01:00 PM — 01:30 PM</p>
+</div>
+<button class="mt-4 text-left font-label-md text-label-md underline underline-offset-4 hover:opacity-80 transition-opacity">
+                        View Schedule
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for table rows
+        document.querySelectorAll('.table-row-hover').forEach(row => {
+            row.addEventListener('click', () => {
+                // Flash effect
+                row.classList.add('bg-primary-container/10');
+                setTimeout(() => {
+                    row.classList.remove('bg-primary-container/10');
+                }, 400);
+            });
+        });
+
+        // Simple date picker logic placeholder
+        const dateInput = document.querySelector('input[type="date"]');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+        }
+    </script>
+
+        <!-- Modal overlay - add once, near end of <body> -->
+    <div id="modalOverlay" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-[100]">
+        <div class="bg-surface-container-lowest rounded-xl w-full max-w-md p-6 relative">
+            <button id="modalClose" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">✕</button>
+            <h2 id="modalTitle" class="text-lg font-bold mb-4">Create New</h2>
+            <form id="modalForm" class="space-y-3">
+                <!-- fields injected here -->
+            </form>
+            <p id="modalError" class="text-red-500 text-sm mt-2 hidden"></p>
+            <div class="flex justify-end gap-2 mt-4">
+                <button type="button" id="modalCancel" class="px-4 py-2 rounded-lg border border-outline-variant text-sm">Cancel</button>
+                <button type="submit" form="modalForm" id="modalSubmit" class="px-4 py-2 rounded-lg bg-primary-container text-on-primary-container text-sm font-bold">Save</button>
+            </div>
+        </div>
+    </div>
+</body></html>

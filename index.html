@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxe Salon | Receptionist Portal</title>
+<script>window.PAGE_TITLE = "Dashboard";</script>
+<script src="scripts/header-logic.js" defer></script>
+<script src="scripts/include.js" defer></script>
+<script src="scripts/fetch-appointments.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f9f9f7",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f1f1ef",
+                    "on-tertiary-fixed-variant": "#27438a",
+                    "secondary-fixed-dim": "#f5b8ae",
+                    "primary-container": "#d4af37",
+                    "surface-variant": "#e2e3e1",
+                    "tertiary-fixed-dim": "#b4c5ff",
+                    "surface": "#f9f9f7",
+                    "surface-dim": "#dadad8",
+                    "background": "#f9f9f7",
+                    "on-primary-container": "#554300",
+                    "tertiary-fixed": "#dbe1ff",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eeeeec",
+                    "on-secondary-fixed-variant": "#663b34",
+                    "on-surface-variant": "#4d4635",
+                    "outline": "#7f7663",
+                    "on-secondary-container": "#7a4c44",
+                    "surface-tint": "#735c00",
+                    "secondary": "#81524a",
+                    "on-primary-fixed": "#241a00",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#32110c",
+                    "on-background": "#1a1c1b",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#d0c5af",
+                    "primary-fixed": "#ffe088",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#e9c349",
+                    "secondary-container": "#fec0b6",
+                    "tertiary-container": "#97b0ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#e9c349",
+                    "on-tertiary-fixed": "#00174b",
+                    "on-tertiary-container": "#254188",
+                    "surface-container-low": "#f4f4f2",
+                    "on-surface": "#1a1c1b",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e2e3e1",
+                    "surface-container-high": "#e8e8e6",
+                    "inverse-surface": "#2f3130",
+                    "primary": "#735c00",
+                    "secondary-fixed": "#ffdad4",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#415ba4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sidebar-width": "240px",
+                    "sidebar-collapsed": "72px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "margin-page": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-display": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-md": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f7; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .sidebar-active-indicator {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #D4AF37;
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Side Navigation Bar -->
+ <div id="sidebar-placeholder"></div>
+
+<!-- Top Navigation Bar -->
+<div id="header-placeholder"></div>
+
+
+<!-- Main Content Area -->
+<main class="ml-sidebar-width pt-16 min-h-screen">
+<div class="max-w-[1440px] mx-auto p-margin-page">
+<!-- Page Title Area -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-headline-display text-headline-display text-on-surface mb-2">Morning, Elena</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is what's happening at Ethereal Glow today.</p>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="font-label-md text-label-md font-semibold">October 24, 2023</span>
+</div>
+</div>
+<!-- Metric Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-widest">Appointments</span>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">event_available</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-display text-headline-display">24</span>
+<span class="font-label-md text-label-md text-primary ml-2">+12% vs last week</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">16 completed • 8 remaining</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-widest">Revenue</span>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-display text-headline-display">$1,250</span>
+<span class="font-label-md text-label-md text-primary ml-2">Today so far</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Projected: $2,100 total</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-widest">Active Stylists</span>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">content_cut</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-display text-headline-display">8/10</span>
+<span class="font-label-md text-label-md text-on-surface-variant ml-2">On Duty</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Julian &amp; Sarah on break</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-lg rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-widest">Pending Payments</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-display text-headline-display text-secondary">5</span>
+<span class="font-label-md text-label-md text-secondary ml-2">Requires Action</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">3 check-outs in progress</p>
+</div>
+</div>
+<!-- Dashboard Split View -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left: Today's Appointment Timeline (List View) -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col h-[600px]">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-white">
+<h3 class="font-headline-md text-headline-md">Today's Appointment Timeline</h3>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+
+
+<div class="flex-1 overflow-y-auto scroll-hide">
+    <table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-low z-10">
+<tr>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">TIME</th>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">CUSTOMER</th>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">STYLIST</th>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">SERVICE</th>
+<th class="px-6 py-3 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">STATUS</th>
+</tr>
+</thead>
+<tbody id="appointmentsTableBody">
+    <!--live rows here -->
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant bg-surface-container-low text-center">
+<a class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest hover:underline" href="appointments.html">View All Appointments</a>
+</div>
+</div>
+<!-- Right: "Needs Attention" List -->
+<div class="flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col h-full">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-white">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+                                Needs Attention
+                                <span class="bg-secondary text-white text-[10px] px-1.5 py-0.5 rounded-full">5</span>
+</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="p-6 space-y-stack-md flex-1">
+<!-- Alert Item 1 -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-error-container/10 border-l-4 border-error">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-error-container">person_off</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md font-bold text-error uppercase">No-Show</p>
+<p class="font-body-md text-body-md font-medium">Katherine Vance</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-3">Missed 11:45 AM appointment</p>
+<div class="flex gap-2">
+<button class="bg-error text-white px-3 py-1.5 rounded-lg font-label-sm text-label-sm font-bold">Call Now</button>
+<button class="border border-outline-variant px-3 py-1.5 rounded-lg font-label-sm text-label-sm">Mark Resolved</button>
+</div>
+</div>
+</div>
+<!-- Alert Item 2 -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-primary-container/5 border-l-4 border-primary">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-primary-container">payments</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md font-bold text-primary uppercase">Payment Unconfirmed</p>
+<p class="font-body-md text-body-md font-medium">Balayage - Alice R.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-3">Service completed 15 mins ago</p>
+<div class="flex gap-2">
+<button class="bg-primary-container text-on-primary-container px-3 py-1.5 rounded-lg font-label-sm text-label-sm font-bold">Checkout</button>
+</div>
+</div>
+</div>
+<!-- Alert Item 3 -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container border-l-4 border-outline">
+<div class="w-10 h-10 rounded-full bg-outline-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md font-bold text-on-surface uppercase">Low Inventory</p>
+<p class="font-body-md text-body-md font-medium">L'Oréal Mythic Oil</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">2 units remaining</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Small Promotional/Status Card -->
+<div class="bg-primary-container p-6 rounded-xl relative overflow-hidden text-on-primary-container">
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md mb-2">Peak Hours Incoming</h4>
+<p class="font-body-md text-body-md opacity-90 mb-4">You have 12 appointments between 2 PM and 5 PM. All stylists are booked.</p>
+<button class="bg-white/20 backdrop-blur-sm border border-white/30 px-4 py-2 rounded-lg font-label-md text-label-md font-bold hover:bg-white/30 transition-colors">Shift Details</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl opacity-10 pointer-events-none" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button Contextual Logic: Show only on Dashboard as per guidelines -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<script>
+        // Simple micro-interactions for demo purposes
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', (e) => {
+                if (el.tagName === 'A' && el.getAttribute('href') === '#') e.preventDefault();
+                console.log('Action triggered:', el.innerText || 'Icon Button');
+            });
+        });
+
+        // Tonal layering hover effects
+        const cards = document.querySelectorAll('.bg-surface-container-lowest');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('border-primary/30');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('border-primary/30');
+            });
+        });
+    </script>
+
+    <!-- Modal overlay - add once, near end of <body> -->
+<div id="modalOverlay" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-[100]">
+    <div class="bg-surface-container-lowest rounded-xl w-full max-w-md p-6 relative">
+        <button id="modalClose" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">✕</button>
+        <h2 id="modalTitle" class="text-lg font-bold mb-4">Create New</h2>
+        <form id="modalForm" class="space-y-3">
+            <!-- fields injected here -->
+        </form>
+        <p id="modalError" class="text-red-500 text-sm mt-2 hidden"></p>
+        <div class="flex justify-end gap-2 mt-4">
+            <button type="button" id="modalCancel" class="px-4 py-2 rounded-lg border border-outline-variant text-sm">Cancel</button>
+            <button type="submit" form="modalForm" id="modalSubmit" class="px-4 py-2 rounded-lg bg-primary-container text-on-primary-container text-sm font-bold">Save</button>
+        </div>
+    </div>
+</div>
+
+</body></html>
