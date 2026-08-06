@@ -44,6 +44,7 @@ const ACTIONS = {
     webhook: "https://sheikhashir.app.n8n.cloud/webhook/create-new-service-web",
     fields: [
       { name: "name", label: "Service Name", type: "text", required: true },
+      { name: "description", label: "Description", type: "text", required: true },
       { name: "category", label: "Category", type: "text" },
       { name: "duration_minutes", label: "Duration (minutes)", type: "number", required: true },
       { name: "price", label: "Price (PKR)", type: "number", required: true }
@@ -61,7 +62,7 @@ const ACTIONS = {
   },
   "create-appointment": {
     title: "Create Appointment",
-    webhook: "https://sheikhashir.app.n8n.cloud/webhook/create-new-appointment",
+    webhook: "https://sheikhashir.app.n8n.cloud/webhook/create-new-appointment-web",
     fields: [
       { name: "phone", label: "Customer Phone", type: "text", required: true },
       { name: "name", label: "Customer Name (if new)", type: "text" },
