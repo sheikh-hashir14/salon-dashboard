@@ -7,6 +7,7 @@
 <script>window.PAGE_TITLE = "Stylists";</script>
 <script src="scripts/header-logic.js" defer></script>
 <script src="scripts/include.js" defer></script>
+<script src="scripts/fetch-stylists.js" defer></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -141,112 +142,10 @@
                     </button>
 </div>
 </div>
+
 <!-- Stylists Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-stack-lg">
-<!-- Stylist Card 1: Elena V. -->
-<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
-<div class="p-6">
-<div class="flex justify-between items-start mb-6">
-<div class="relative">
-<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
-<img class="w-full h-full object-cover" data-alt="A professional headshot of a female hair stylist named Elena V. with a warm, confident smile, styled in a modern boutique salon environment with soft, golden-hour lighting. She has artistic hair coloring and wears a minimalist black stylist apron. The background is softly blurred showing high-end salon equipment and plants, maintaining a premium editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaHiREos9HLYfSmQPBc4WxuTvldsS4deDl9JVlFfD4GNRMdGcYzNqWryLlV4iXWFupJu-Pr41MyGwxduLgLIKj_HARZZXCEa0GezgMeEAy98EpRM5SoQmiKHNQWPbqqqCz8OTK21EgI9Pd26593BihnjUYqae5EzKGN1_dCgTqHenFEKJOfEla5iJ4tnP2gkdS-JNjGEaTHFf0__psLRHnftF9Ai1cYw2J450QCBk_7XhoxmH8Bjk5bhv3JbqO8xzOMjzkowe4xsw"/>
-</div>
-<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-green-500"></div>
-</div>
-<span class="px-3 py-1 bg-green-50 text-green-700 text-label-sm font-label-sm rounded-full border border-green-100 uppercase tracking-wider">Available</span>
-</div>
-<div class="space-y-1">
-<h3 class="font-headline-md text-headline-md text-on-surface">Elena V.</h3>
-<p class="font-label-md text-label-md text-on-surface-variant font-medium">Senior Master Stylist</p>
-</div>
-<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
-<div class="flex gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-md text-label-md text-on-surface">4.9</span>
-</div>
-<span class="text-label-md text-on-surface-variant">12 Appts Today</span>
-</div>
-</div>
-<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
-</div>
-<!-- Stylist Card 2: Marcus J. -->
-<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
-<div class="p-6">
-<div class="flex justify-between items-start mb-6">
-<div class="relative">
-<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a male stylist named Marcus J. with a sophisticated, professional appearance. He is standing in a luxury minimalist salon with neutral tones and soft warm lighting. He has a neatly trimmed beard and is dressed in a smart-casual beige shirt. The composition is focused and high-density, conveying boutique elegance and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALlCqR4U_LoB882OfkS4za9YkOyNy1_k7O7OovjBDB8BYrsug2KaUcMSosYLayJDFImgGHow2MEUeHStcfqZlcyO8vJHI6iX961EtP-RkWxZDAmMqYOw4x7wbLWI76Bn2uhAe6wFuUpfvKvppvdLdEVfHyHqKKcMPuVfXVzJASt6ccUSvDyqhJKgyceHfmJeOyGZqUV7mjPrCwLj1hGtfPW1MWYPY8Ehq4t88jYYOeKRV8roRi2dLUKMGNQ5DVX3cc63xdr_yyyAo"/>
-</div>
-<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-orange-400"></div>
-</div>
-<span class="px-3 py-1 bg-orange-50 text-orange-700 text-label-sm font-label-sm rounded-full border border-orange-100 uppercase tracking-wider">Busy</span>
-</div>
-<div class="space-y-1">
-<h3 class="font-headline-md text-headline-md text-on-surface">Marcus J.</h3>
-<p class="font-label-md text-label-md text-on-surface-variant font-medium">Precision Cut Specialist</p>
-</div>
-<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
-<div class="flex gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-md text-label-md text-on-surface">4.8</span>
-</div>
-<span class="text-label-md text-on-surface-variant">In Session (20m)</span>
-</div>
-</div>
-<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
-</div>
-<!-- Stylist Card 3: Sophia L. -->
-<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
-<div class="p-6">
-<div class="flex justify-between items-start mb-6">
-<div class="relative">
-<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
-<img class="w-full h-full object-cover" data-alt="A stylish female hair professional named Sophia L. in a bright, modern salon setting. She is smiling gently at the camera, wearing professional black attire. The lighting is diffused and airy, highlighting her expertise. The background shows hints of a clean, high-end beauty studio with gold accents and marble surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCILC3nrPMXsK1agLii1eIE0V6D73eW8GchIDQImvlP8Uw5SnsiN_V4iJfYSRF2_6VVkIEclfEvCHQZ6DprQ7vT2XvB3QEdDALXbMzOb-zoHb9p4-quHOmSzmO9BqmzSM3Td33LCMuIMo4v3Jtl6uU5xh6l665-F3TdWh2IeahF7g7LrnEBo7lD6p8JWSO7PMgOv0XkkqT6BA7Z30CTJrXJzpSniGDa1YnT0Qw9sVcC707EZOacA-B3GNqU0LGyfBfWKDEcD3Z7nI"/>
-</div>
-<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-gray-400"></div>
-</div>
-<span class="px-3 py-1 bg-gray-100 text-gray-600 text-label-sm font-label-sm rounded-full border border-gray-200 uppercase tracking-wider">Off-duty</span>
-</div>
-<div class="space-y-1">
-<h3 class="font-headline-md text-headline-md text-on-surface">Sophia L.</h3>
-<p class="font-label-md text-label-md text-on-surface-variant font-medium">Color &amp; Highlights Expert</p>
-</div>
-<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
-<div class="flex gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-md text-label-md text-on-surface">5.0</span>
-</div>
-<span class="text-label-md text-on-surface-variant">Starts at 2:00 PM</span>
-</div>
-</div>
-<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
-</div>
-<!-- Stylist Card 4: Julian R. -->
-<div class="group bg-surface-container-lowest border border-outline-variant hover:border-primary-container transition-all duration-300 relative overflow-hidden rounded-lg">
-<div class="p-6">
-<div class="flex justify-between items-start mb-6">
-<div class="relative">
-<div class="w-20 h-20 rounded-full bg-surface-container overflow-hidden border-2 border-surface-container-highest group-hover:border-primary-container/30 transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a male stylist named Julian R., exhibiting a creative and trendy look. He is in a contemporary salon with architectural lighting and dark charcoal accents. His style is editorial and avant-garde, suggesting a focus on creative styling. The overall mood is cool, calm, and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKD6KekL3rACG5pfJemHNj9doH9-w5YEuAO7DZxbnBxKrysWSEn5DYffidFAcqUahjMovqxgVkU3QQOgYqc0vKMw1p9Wc_MhxzIAGmZikcjc9kA9n_GhTg3__SApe59oBLJBjodoaGaceY6oXvnDvUMZ23N12d4THUD6ZacCsyU-cPVT1JohAGBiVhPaZMLsu3H3KNSTcb_-c49cgC7ejsbbw5Or6av7JPpgmR1oNXurTOtKKaL2bB3r1vwIFQcY6luQCGNnjKfq0"/>
-</div>
-<div class="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-white bg-green-500"></div>
-</div>
-<span class="px-3 py-1 bg-green-50 text-green-700 text-label-sm font-label-sm rounded-full border border-green-100 uppercase tracking-wider">Available</span>
-</div>
-<div class="space-y-1">
-<h3 class="font-headline-md text-headline-md text-on-surface">Julian R.</h3>
-<p class="font-label-md text-label-md text-on-surface-variant font-medium">Lead Barber &amp; Groomer</p>
-</div>
-<div class="mt-6 pt-6 border-t border-outline-variant flex justify-between items-center">
-<div class="flex gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-md text-label-md text-on-surface">4.7</span>
-</div>
-<span class="text-label-md text-on-surface-variant">8 Appts Today</span>
-</div>
-</div>
-<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors pointer-events-none"></div>
-</div>
+<div id="stylistsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-stack-lg">
+
 <!-- Add New Stylist (Ghost Card) -->
 <button class="group border-2 border-dashed border-outline-variant hover:border-primary-container hover:bg-primary-container/5 transition-all duration-300 flex flex-col items-center justify-center p-8 rounded-lg min-h-[300px]">
 <div class="w-16 h-16 rounded-full bg-surface-container group-hover:bg-primary-container/20 flex items-center justify-center mb-4 transition-colors">
